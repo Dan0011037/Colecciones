@@ -28,7 +28,12 @@ public class MainContactos {
         String numero = scanner.nextLine();
 
         Contacto contacto = new Contacto(nombre, numero);
-        telefonoMovil.addNewContact(contacto);
+        if (telefonoMovil.addNewContact(contacto)) {
+            System.out.println("Contacto añadido con exito");
+        }else {
+            System.out.println("Este contacto YA existe.");
+            System.out.println("No se puede añadir");
+        }
     }
 
     public static void actualizarContacto() {
@@ -37,16 +42,23 @@ public class MainContactos {
         System.out.println("Numero de contacto antiguo: ");
         String numero = scanner.nextLine();
 
-        if (nombre == null) {
+        Contacto contacto = telefonoMovil.queryContacto(nombre);
+        if (contacto == null){
             System.out.println("Este contacto no existe.");
-        } else {
-            System.out.println("Nuevo nombre: ");
-            String nuevoNombre = scanner.nextLine();
-            System.out.println("Nuevo numero: ");
-            String nuevoNumero = scanner.nextLine();
+            return;
+        }
 
-            Contacto contacto = new Contacto(nuevoNombre, nuevoNumero);
-            telefonoMovil.updateContact(telefonoMovil.queryContacto(nombre), contacto);
+            System.out.println("Nuevo nombre: ");
+        String nuevoNombre = scanner.nextLine();
+        System.out.println("Nuevo numero: ");
+        String nuevoNumero = scanner.nextLine();
+
+        Contacto nuevoContacto = new Contacto(nuevoNombre, nuevoNumero);
+
+        if (telefonoMovil.updateContact(telefonoMovil.queryContacto(nombre), nuevoContacto)) {
+            System.out.println("Contacto actualizado con exito.");
+        } else {
+            System.out.println("Este contacto no existe.");
         }
 
     }
@@ -55,10 +67,10 @@ public class MainContactos {
         System.out.println("Nombre que quiere eliminar: ");
         String nombre = scanner.nextLine();
 
-        if (nombre == null) {
-            System.out.println("Este contacto no existe.");
+        if (telefonoMovil.removeContact(telefonoMovil.queryContacto(nombre))) {
+            System.out.println("Contacto eliminado con exito.");
         } else {
-            telefonoMovil.removeContact(telefonoMovil.queryContacto(nombre));
+            System.out.println("Este contacto no existe.");
         }
     }
 
@@ -86,42 +98,43 @@ public class MainContactos {
 
             switch (opcion) {
                 case 0:
-                    System.out.println("-------");
                     System.out.println("Adios.");
                     continuar = false;
                     break;
                 case 1:
-                    System.out.println("-------");
                     imprimirContactos();
                     System.out.println("-------");
                     break;
                 case 2:
-                    System.out.println("-------");
                     anyadirContacto();
                     System.out.println("-------");
                     break;
                 case 3:
-                    System.out.println("-------");
                     actualizarContacto();
                     System.out.println("-------");
                     break;
                 case 4:
-                    System.out.println("-------");
                     eliminarContacto();
                     System.out.println("-------");
                     break;
                 case 5:
-                    System.out.println("-------");
                     buscarContacto();
                     System.out.println("-------");
                     break;
                 case 6:
                     System.out.println("-------");
-                    menu();
-                    System.out.println("-------");
+                    break;
+                default:
+                    System.out.println("No valido");
+                    System.out.println("---");
                     break;
             }
         }
-
+        /*
+        Ejemplo contactos:
+        Daniela, 687043968
+        Anon, 666666666
+        Oscar, 673702903
+         */
     }
 }
