@@ -49,6 +49,13 @@ public class Album {
         }
         return false;
     }
+
+    public void printPlaylist(){
+        for (int i =0; i<canciones.size();i++){
+            Cancion cancion = canciones.get(i);
+            System.out.println(cancion.getTitulo() + ", " + cancion.getDuracion());
+        }
+    }
 }
 
 

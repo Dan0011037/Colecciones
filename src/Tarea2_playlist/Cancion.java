@@ -12,6 +12,9 @@ public class Cancion {
     public String getTitulo() {
         return titulo;
     }
+    public double getDuracion(){
+        return duracion;
+    }
 
     public String toString(){
         return this.titulo + ": " + this.duracion;
