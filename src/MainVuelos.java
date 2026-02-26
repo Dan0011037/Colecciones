@@ -22,10 +22,10 @@ public class MainVuelos {
     }
 
     public static void vuelos(){
-        aeropuerto.anadirVuelo(new Vuelos("2023-02", "Valencia", "Tenerife", Vuelos.TipoClase.Turista, "20-08"));
-        aeropuerto.anadirVuelo(new Vuelos("2023-01", "Valencia", "Menorca", Vuelos.TipoClase.Turista, "15-08"));
-        aeropuerto.anadirVuelo(new Vuelos("2023-03", "París", "Valencia", Vuelos.TipoClase.Primera, "15-08"));
-        aeropuerto.anadirVuelo(new Vuelos("2023-04", "Atenas", "Valencia", Vuelos.TipoClase.Primera, "20-08"));
+        aeropuerto.anadirVuelo(new Vuelos("2023-02", "Valencia", "Tenerife", Vuelos.TipoClase.turista, "20-08"));
+        aeropuerto.anadirVuelo(new Vuelos("2023-01", "Valencia", "Menorca", Vuelos.TipoClase.turista, "15-08"));
+        aeropuerto.anadirVuelo(new Vuelos("2023-03", "París", "Valencia", Vuelos.TipoClase.primera, "15-08"));
+        aeropuerto.anadirVuelo(new Vuelos("2023-04", "Atenas", "Valencia", Vuelos.TipoClase.primera, "20-08"));
     }
 
     // imprime vuelos
@@ -47,19 +47,36 @@ public class MainVuelos {
     }
 
     public static void buscarClave(){
+        if (aeropuerto.getMisVuelos().isEmpty()){
+            System.out.println("La lista de vuelos está vacía");
+            return;
+        }
+
         System.out.println("Clave: ");
-        String clave = scanner.nextLine();
+        String clave = scanner.nextLine().toLowerCase();
 
-        if (!clave.equalsIgnoreCase("numero")|| clave.equalsIgnoreCase("origen")|| clave.equalsIgnoreCase("destino")|| clave.equalsIgnoreCase("clase")|| clave.equalsIgnoreCase("dia")){
-            System.out.println("Clave no existe");
-        }else {
-
+        if (clave.equalsIgnoreCase("numero")|| clave.equalsIgnoreCase("origen")||
+                clave.equalsIgnoreCase("destino")|| clave.equalsIgnoreCase("clase")||
+                clave.equalsIgnoreCase("dia")) {
+            //para cada objeto de tipo Vuelos(llamado v) que este dentro de la lista de vuelos del aeropurto
+            for (Vuelos v: aeropuerto.getMisVuelos()){
+                switch (clave) {
+                    case "numero": System.out.println(v.getNumero()); break;
+                    case "origen": System.out.println(v.getOrigen()); break;
+                    case "destino": System.out.println(v.getDestino()); break;
+                    case "clase": System.out.println(v.getClase()); break;
+                    case "dia": System.out.println(v.getDia()); break;
+                }
+            }
+        } else {
+            System.out.println("Error: La clave '" + clave + "' no es válida.");
         }
     }
 
     //añade vuelos
     public static void anadirVuelos() {
         String numero, dia, origen, destino;
+        Vuelos.TipoClase clase;
         //numero
         do {
             System.out.println("Numero (XXXX-XX):");
@@ -80,8 +97,8 @@ public class MainVuelos {
         } while (!destino.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+"));
 
         //clase
-        System.out.println("Clase (Turista, Primera): ");
-        Vuelos.TipoClase clase  = Vuelos.TipoClase.valueOf(scanner.nextLine());
+        System.out.println("Clase (turista, primera): ");
+        clase = Vuelos.TipoClase.valueOf(scanner.nextLine());
 
         //dia
         do {
@@ -134,7 +151,7 @@ public class MainVuelos {
                     System.out.println("-------");
                     break;
                 case 3:
-                    buscarNumero();
+                    buscarClave();
                     System.out.println("-------");
                     break;
                 case 4:

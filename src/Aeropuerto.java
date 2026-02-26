@@ -59,4 +59,8 @@ public class Aeropuerto {
         return null;
     }
 
+    public ArrayList<Vuelos> getMisVuelos(){
+        return misVuelos;
+    }
+
 }
