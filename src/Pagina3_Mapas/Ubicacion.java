@@ -21,7 +21,6 @@ public class Ubicacion {
 
     public Map<String, Integer> getExits() {return exits;}
 
-
     public void addExit(String direccion, int idUbicacion){
         exits.put(direccion, idUbicacion);
     }
