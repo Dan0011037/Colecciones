@@ -37,9 +37,10 @@ public class Aeropuerto {
     //eliminar vuelo por numero
     public boolean eliminarVuelo(String numero){
         for (int i = 0; i < misVuelos.size(); i++){
-            if (misVuelos.get(i).getNumero().equals(numero));
-            misVuelos.remove(i);
-            return true;
+            if (misVuelos.get(i).getNumero().equals(numero)){
+                misVuelos.remove(i);
+                return true;
+            }
         }
         return false;
     }

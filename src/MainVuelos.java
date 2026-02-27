@@ -36,7 +36,6 @@ public class MainVuelos {
 
     // busca por numero
     public static void buscarNumero() {
-
         if (aeropuerto.getMisVuelos().isEmpty()){
             System.out.println("La lista de vuelos está vacía");
             return;
