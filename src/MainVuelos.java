@@ -1,9 +1,4 @@
-import Pagina1.Contacto;
-import Pagina3_Mapas.Ubicacion;
-
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class MainVuelos {
@@ -30,11 +25,22 @@ public class MainVuelos {
 
     // imprime vuelos
     public static void imprimirVuelos() {
+
+        if (aeropuerto.getMisVuelos().isEmpty()){
+            System.out.println("La lista de vuelos está vacía");
+            return;
+        }
         vuelos();
         aeropuerto.imprimirVuelos();
     }
 
+    // busca por numero
     public static void buscarNumero() {
+
+        if (aeropuerto.getMisVuelos().isEmpty()){
+            System.out.println("La lista de vuelos está vacía");
+            return;
+        }
         System.out.println("Numero del vuelo: ");
         String numero = scanner.nextLine();
         Vuelos vuelos = aeropuerto.buscadorVuelo(numero);
@@ -46,6 +52,7 @@ public class MainVuelos {
         }
     }
 
+    // busca por clave
     public static void buscarClave(){
         if (aeropuerto.getMisVuelos().isEmpty()){
             System.out.println("La lista de vuelos está vacía");
@@ -73,7 +80,7 @@ public class MainVuelos {
         }
     }
 
-    //añade vuelos
+    // añade vuelos
     public static void anadirVuelos() {
         String numero, dia, origen, destino;
         Vuelos.TipoClase clase;
@@ -116,21 +123,26 @@ public class MainVuelos {
         }
     }
 
-    //eliminar vuelo
+    // eliminar vuelo
     public static void eliminarVuelo() {
+
+        if (aeropuerto.getMisVuelos().isEmpty()){
+            System.out.println("La lista de vuelos está vacía");
+            return;
+        }
         System.out.println("Numero que quiere eliminar: ");
         String numero = scanner.nextLine();
 
-        if (aeropuerto.eliminarVuelo(aeropuerto.buscadorVuelo(numero))) {
+        if (aeropuerto.eliminarVuelo(numero)) {
             System.out.println("Vuelo eliminado con exito.");
         } else {
             System.out.println("Este vuelo no existe.");
         }
     }
 
-    //main
+    // main
     public static void main(String args[]){
-
+        vuelos();
         boolean continuar = true;
         int opcion;
 
