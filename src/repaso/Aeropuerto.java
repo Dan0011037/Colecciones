@@ -1,5 +1,4 @@
-
-import Pagina1.Contacto;
+package repaso;
 
 import java.util.ArrayList;
 
@@ -34,7 +33,7 @@ public class Aeropuerto {
         return true;
     }
 
-    //eliminar vuelo por numero
+    //eliminar vuelo por número
     public boolean eliminarVuelo(String numero){
         for (int i = 0; i < misVuelos.size(); i++){
             if (misVuelos.get(i).getNumero().equals(numero)){
