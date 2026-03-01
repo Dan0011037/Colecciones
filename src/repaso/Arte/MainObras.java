@@ -1,4 +1,4 @@
-package repaso;
+package repaso.Arte;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -80,7 +80,7 @@ public class MainObras {
     //buscar obra por artista
     public static void buscarArtista() {
         if (artistasMain.getMisArtistas().isEmpty()){
-            System.out.println("La lista de repaso.Artistas está vacía");
+            System.out.println("La lista de repaso.Arte.Artistas está vacía");
             return;
         }
         System.out.println("Nombre del artista: ");
@@ -91,7 +91,7 @@ public class MainObras {
             System.out.println("Este artrista no existe.");
         } else {
             System.out.println("Nombre: " + artistas.getNombre() + "\nNacionalidad: " + artistas.getNacionalidad() +
-            "\n repaso.Obras: ");
+            "\n repaso.Arte.Obras: ");
             boolean tieneObras = false;
             for (Obras obrasArtista: obrasMain.getMisObras()){
                 if (obrasArtista.getArtistas().getNombre().equals(nombre)){

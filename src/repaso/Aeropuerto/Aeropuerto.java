@@ -1,4 +1,4 @@
-package repaso;
+package repaso.Aeropuerto;
 
 import java.util.ArrayList;
 

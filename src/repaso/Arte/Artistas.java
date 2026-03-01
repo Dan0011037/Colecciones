@@ -1,4 +1,4 @@
-package repaso;
+package repaso.Arte;
 
 import java.util.ArrayList;
 

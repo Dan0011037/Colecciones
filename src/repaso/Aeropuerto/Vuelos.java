@@ -1,4 +1,4 @@
-package repaso;
+package repaso.Aeropuerto;
 
 public class Vuelos {
     private String numero;

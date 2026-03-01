@@ -1,4 +1,4 @@
-package repaso;
+package repaso.Aeropuerto;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -66,7 +66,7 @@ public class MainVuelos {
         if (clave.equalsIgnoreCase("numero")|| clave.equalsIgnoreCase("origen")||
                 clave.equalsIgnoreCase("destino")|| clave.equalsIgnoreCase("clase")||
                 clave.equalsIgnoreCase("dia")) {
-            //para cada objeto de tipo repaso.Vuelos(llamado v) que este dentro de la lista de vuelos del aeropurto
+            //para cada objeto de tipo repaso.Aeropuerto.Vuelos(llamado v) que este dentro de la lista de vuelos del aeropurto
             for (Vuelos v: aeropuerto.getMisVuelos()){
                 switch (clave) {
                     case "numero": System.out.println(v.getNumero()); break;
