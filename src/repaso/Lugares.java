@@ -112,12 +112,59 @@ public class Lugares {
                 "3 - imprimir el menú");
     }
 
+    /*
+    List
+Colección ordenada que permite duplicados y acceso por índice.
 
+ArrayList
+Implementación de List basada en array dinámico; acceso rápido por índice, inserciones intermedias más lentas.
 
+LinkedList
+Lista enlazada; inserciones y eliminaciones rápidas en medio, acceso por índice más lento.
 
+Set
+Colección que no permite elementos duplicados.
 
+HashSet
+Set basado en hash; rápido, no mantiene orden.
 
+TreeSet
+Set ordenado automáticamente según orden natural o Comparator.
 
+Map
+Estructura clave-valor; no permite claves duplicadas.
 
+HashMap
+Map rápido basado en hash; no mantiene orden.
+
+TreeMap
+Map ordenado por clave automáticamente.
+     */
+
+    /*
+    Herencia
+Una clase hereda atributos y métodos de otra (relación “es un”).
+
+Super
+Permite acceder al constructor o métodos de la clase padre.
+
+Override (@Override)
+Reescribe un metodo heredado para cambiar su comportamiento.
+
+Polimorfismo
+Permite tratar objetos hijos como si fueran del tipo padre, ejecutando el método correspondiente al objeto real.
+
+Clase abstracta
+Clase que no se puede instanciar y puede contener métodos sin implementar.
+
+Interface
+Contrato que obliga a implementar ciertos métodos sin definir cómo funcionan.
+
+Encapsulación
+Proteger los atributos usando private y acceder mediante métodos públicos.
+
+Composición
+Una clase contiene objetos de otra (relación “tiene un”).
+     */
 
 }

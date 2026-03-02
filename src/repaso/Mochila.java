@@ -9,7 +9,8 @@ public class Mochila {
         this.herramientas = new  ArrayList<>();
 
         /*split busca la coma en el texto y corta la frase en trozos
-        si pone "hachca, escudo" crea un Array temporal ["hacha", "escudo"]*/
+        si pone "hachca, escudo" crea un Array temporal ["hacha", "escudo"] */
+
         String[] texto = textoHerramientas.split(",");
         for (String s : texto) {
             /* trim quita los espacios vacios que quedan detras de las comas, toLowerCase lo pasa toodo a minuiscua */
@@ -25,6 +26,20 @@ public class Mochila {
     public String imprimirHerramientas() {
         return String.join(", ", herramientas);
     }
+
+    public boolean eliminarHerramienta(String herramienta) {
+        for (int i = 0; i < this.herramientas.size(); i++) {
+            if (this.herramientas.get(i).equalsIgnoreCase(herramienta)) {
+                this.herramientas.remove(i);
+            }
+        }
+        return false;
+    }
     public ArrayList<String> getHerramientas() {return herramientas;}
 
+
+    @Override
+    public String toString() {
+        return "Mochila: " + herramientas;
+    }
 }
