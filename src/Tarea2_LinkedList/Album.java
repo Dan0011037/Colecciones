@@ -1,4 +1,4 @@
-package Tarea2_playlist;
+package Tarea2_LinkedList;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package Tarea2_playlist;
+package Tarea2_LinkedList;
 
 public class Cancion {
     private String titulo;

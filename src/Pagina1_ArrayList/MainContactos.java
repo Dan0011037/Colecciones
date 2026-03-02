@@ -1,4 +1,4 @@
-package Pagina1;
+package Pagina1_ArrayList;
 
 import java.util.ArrayList;
 import java.util.Scanner;

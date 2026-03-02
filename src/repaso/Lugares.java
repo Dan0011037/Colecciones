@@ -113,58 +113,253 @@ public class Lugares {
     }
 
     /*
-    List
-Colección ordenada que permite duplicados y acceso por índice.
+    -ArrayList
+• Necesitas acceso por índice
+• Recorres mucho
+• Añades al final
+NO CUANDO SE INSERTA POR EN MEDIO
+List<String> lista = new ArrayList<>();
 
-ArrayList
-Implementación de List basada en array dinámico; acceso rápido por índice, inserciones intermedias más lentas.
-
-LinkedList
+    -LinkedList
 Lista enlazada; inserciones y eliminaciones rápidas en medio, acceso por índice más lento.
+• Mucha inserción/eliminación intermedia
+List<String> lista = new LinkedList<>();
 
-Set
+    -Set
 Colección que no permite elementos duplicados.
+• equals() ,compara contenido
+@Override
+    public boolean equals(Object o) {
+                // 1. ¿Son la misma instancia de memoria?
+        if (this == o) return true;
+                // 2. ¿Es nulo o de otra clase?
+        if (o == null || getClass() != o.getClass()) return false;
+                // 3. Comparar el atributo clave (DNI)
+        Persona persona = (Persona) o;
+        return Objects.equals(dni, persona.dni);
+    }
 
-HashSet
+• hashCode() ,permite búsquedas rápidas en colecciones, devolviendo el nuemro que representa al objeto
+@Override
+    public int hashCode() {
+        // Genera el hash basado solo en el DNI
+        return Objects.hash(dni);
+    }
+(Si dos objetos son iguales por equals(), DEBEN tener el mismo hashCode().
+Si se sobrescribe uno se debe sobrescribir el otro tambien)
+
+    -HashSet
 Set basado en hash; rápido, no mantiene orden.
+• Solo importa que no haya duplicados
+• No importa el orden
+Set<String> set = new HashSet<>();
 
-TreeSet
+    -TreeSet
 Set ordenado automáticamente según orden natural o Comparator.
+public class Estudiante implements Comparable<Estudiante> {
+    private int edad;
 
-Map
+    @Override
+    public int compareTo(Estudiante otro) {
+        // Orden ascendente por edad
+        return this.edad - otro.edad;
+        // Truco: Si restas, si this.edad es mayor, da positivo (va después).
+    }
+}
+
+    -Map
 Estructura clave-valor; no permite claves duplicadas.
+Map<String, Integer> mapa = new HashMap<>();
 
-HashMap
+    -HashMap
 Map rápido basado en hash; no mantiene orden.
 
-TreeMap
+    -TreeMap
 Map ordenado por clave automáticamente.
+
+    -----
+    Si usas:
+• HashSet
+• HashMap
+• LinkedHashSet
+• LinkedHashMap
+Entonces equals y hashCode son obligatorios.
+    -----
      */
 
     /*
-    Herencia
+        --¿Cuándo usar List?--
+Una List es:
+ Colección ordenada
+ Permite duplicados
+ Acceso por índice
+
+Ejemplo mental:
+“Quiero una lista de tareas en orden”.
+List<String> tareas = new ArrayList<>();
+
+    -ArrayList-
+• Rápido para acceder por índice
+• Malo para insertar en medio
+
+    -LinkedList-
+• Bueno para insertar/eliminar al principio o medio
+• Peor acceso por índice
+
+
+        --¿Cuándo usar LinkedList?--
+Casi nunca.
+Solo si:
+• Vas a insertar/eliminar mucho en medio
+• No necesitas acceso frecuente por índice
+En el 90% de casos → usa ArrayList.
+
+LinkedList está sobrevalorada en teoría y poco usada en la vida real.
+
+
+        --¿Cuándo usar Set?--
+Un Set es:
+ No permite duplicados
+ No tiene índice
+ La igualdad la define equals() + hashCode()
+
+Ejemplo:
+“Quiero un conjunto único de usuarios”.
+Set<String> usuarios = new HashSet<>();
+
+    HashSet
+• No mantiene orden
+• Muy rápido
+
+    LinkedHashSet
+• Mantiene orden de inserción
+
+    TreeSet
+• Ordena automáticamente
+
+ Usa Set cuando:
+• No quieres duplicados
+• Te importa la unicidad
+
+
+        --¿Cuándo usar Map?--
+Un Map es:
+ Clave → Valor
+ No hay claves duplicadas
+
+Ejemplo:
+“Quiero buscar un planeta por su nombre”.
+Map<String, Planeta> sistemaSolar = new HashMap<>();
+
+    --HashMap--
+• Muy rápido
+• Sin orden
+
+    --LinkedHashMap--
+• Mantiene orden de inserción
+
+    --TreeMap--
+• Ordena por clave
+
+ Usa Map cuando:
+• Necesitas búsqueda rápida por clave
+• Tienes relación clave → objeto
+     */
+
+
+    /*
+        --Herencia--
 Una clase hereda atributos y métodos de otra (relación “es un”).
+// CLASE PADRE
+public class Animal {
+    protected String nombre; // protected para que los hijos lo vean
+    public Animal(String nombre) {
+        this.nombre = nombre;
+    }
+    public void comer() {
+        System.out.println(nombre + " está comiendo.");
+    }
+    public void hacerSonido() {
+        System.out.println("Sonido genérico...");
+    }
+}
 
-Super
-Permite acceder al constructor o métodos de la clase padre.
+// CLASE HIJA
+public class Perro extends Animal {
+    public Perro(String nombre) {
+        super(nombre); // Llama al constructor de Animal
+    }
+    @Override // Sobrescritura: Cambiamos el comportamiento del padre
+    public void hacerSonido() {
+        System.out.println("¡Guau! Me llamo " + nombre);
+    }
+}
 
-Override (@Override)
-Reescribe un metodo heredado para cambiar su comportamiento.
 
-Polimorfismo
-Permite tratar objetos hijos como si fueran del tipo padre, ejecutando el método correspondiente al objeto real.
+        --Polimorfismo--
+Permite tratar objetos hijos como si fueran del tipo padre, ejecutando el metodo correspondiente al objeto real.
+public class TestPolimorfismo {
+    public static void main(String[] args) {
+                // Un Animal que resulta ser un Perro
+        Animal miMascota = new Perro("Bobby");
+                // Ejecuta el metodo del Perro, no el del Animal (Enlace dinámico)
+        miMascota.hacerSonido(); // Salida: ¡Guau! Me llamo Bobby
+                // Puedes tener una lista de Animales con distintos tipos dentro
+        List<Animal> refugio = new ArrayList<>();
+        refugio.add(new Perro("Rex"));
+        refugio.add(new Gato("Michi")); // Suponiendo que Gato existe
 
-Clase abstracta
+        for (Animal a : refugio) {
+            a.hacerSonido(); // Cada uno responde a su manera
+        }
+    }
+}
+
+
+        --Clase abstracta--
 Clase que no se puede instanciar y puede contener métodos sin implementar.
+Cuándo usarla: Cuando quieres que todos los hijos compartan código (atributos/métodos normales)
+ pero también tengan comportamientos obligatorios distintos.
 
-Interface
+
+        --Interface--
 Contrato que obliga a implementar ciertos métodos sin definir cómo funcionan.
+public interface Volador {
+    void despegar(); // Por defecto son public y abstract
+}
+public class Avion extends Vehiculo implements Volador {
+    @Override
+    public void despegar() {
+        System.out.println("Avión en pista...");
+    }
+}
 
-Encapsulación
+
+        --Encapsulación--
 Proteger los atributos usando private y acceder mediante métodos públicos.
+public class CuentaBancaria {
+    private double saldo; // Nadie puede tocarlo directamente
+    public void depositar(double cantidad) {
+        if (cantidad > 0) {
+            this.saldo += cantidad;
+        }
+    }
+    public double getSaldo() {
+        return this.saldo;
+    }
+}
 
-Composición
+
+    --Composición--
 Una clase contiene objetos de otra (relación “tiene un”).
+public class Coche {
+    private Motor motor; // Composición
+    public Coche() {
+        this.motor = new Motor();
+    }
+}
+
+
      */
 
 }

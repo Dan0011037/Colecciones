@@ -1,4 +1,4 @@
-package repaso;
+package repaso.Rol;
 
 import java.util.ArrayList;
 

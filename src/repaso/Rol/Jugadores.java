@@ -1,7 +1,4 @@
-package repaso;
-
-import repaso.Aeropuerto.Vuelos;
-import repaso.Arte.Artistas;
+package repaso.Rol;
 
 import java.util.ArrayList;
 

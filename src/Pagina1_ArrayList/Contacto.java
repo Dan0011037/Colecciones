@@ -1,4 +1,4 @@
-package Pagina1;
+package Pagina1_ArrayList;
 
 public class Contacto {
     private String name;
