@@ -65,10 +65,12 @@ public class MainRol {
     }
 
     public static void jugar(){
+
         System.out.println("Ingrese el nombre del jugador 2: ");
         String nombre2 = scanner.nextLine().toUpperCase();
         Jugadores jugadorActual2 = jugadoresMain.queryJugadores(nombre2);
 
+        //si es nulo o tiene el mismo nombre que J1
         while (jugadorActual2 == null || jugadorActual2.getNombre().equals(jugadorActual)){
             System.out.println("No disponible, vuelvalo a intenar: ");
             nombre2 = scanner.nextLine().toUpperCase();
@@ -81,8 +83,10 @@ public class MainRol {
         int victorias1 = 0;
         int victorias2 = 0;
 
+        // se repetirá hasta que alguno de los dos llegue a 2 puntos
         while(victorias1 < 2 && victorias2 < 2){
             System.out.println(jugadorActual.getNombre() + ", elija una herramienta: "+ jugadorActual.getMochila().imprimirHerramientas());
+            //trim hace que si se añade algun espacio por error al introducir el elemento lo detecte en vez de saltar un error
             String herramienta1 = scanner.nextLine().toLowerCase().trim();
             while (!jugadorActual.getMochila().getHerramientas().contains(herramienta1)) {
                 System.out.println("Herramienta no encontrada, introduzca una valida: ");
@@ -95,9 +99,9 @@ public class MainRol {
                 System.out.println("Herramienta no encontrada, introduce una valida: ");
                 herramienta2 = scanner.nextLine();
             }
+
             int valorHerramienta1 = (int) (Math.random()*4)+1;
             int valorHerramienta2 = (int) (Math.random()*4)+1;
-
             System.out.println("\n"+jugadorActual.getNombre() +": " + valorHerramienta1 + "\n" + jugadorActual2.getNombre() +": " + valorHerramienta2);
             if (valorHerramienta1 > valorHerramienta2){
                 System.out.println("Gana " + jugadorActual.getNombre());
