@@ -21,7 +21,7 @@ public class MainObras {
                 4. Buscar obra por artista.
                 5. Eliminar obra.
                 6. Encontrar obra mas barata.
-                7. Encontrar obra mas cara.
+                7. Encontrar obra mas moderna.
                 8. Salir.
                 """);
     }
@@ -90,8 +90,8 @@ public class MainObras {
         if (artistas == null) {
             System.out.println("Este artrista no existe.");
         } else {
-            System.out.println("Nombre: " + artistas.getNombre() + "\nNacionalidad: " + artistas.getNacionalidad() +
-            "\n repaso.Arte.Obras: ");
+            System.out.println("-Nombre: " + artistas.getNombre() + "\n-Nacionalidad: " + artistas.getNacionalidad() +
+            "\n-Obras: ");
             boolean tieneObras = false;
             for (Obras obrasArtista: obrasMain.getMisObras()){
                 if (obrasArtista.getArtistas().getNombre().equals(nombre)){
