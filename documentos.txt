@@ -1,0 +1,4 @@
+LIBRO,111a,La caca,Yo,true,45,Misterio
+LIBRO,111b,El pipi,Tu,false,54,Cacota
+REVISTA,111c,El reves,Nosotros,true,23,Cada tres dias
+REVISTA,111d,No seee,Vosotros,true,14,Cada tres meses

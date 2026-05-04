@@ -1,0 +1,4 @@
+ EQUIPO,Lalala,Venezuela,0,0,Lalala,6
+EQUIPO,ProGamer,Noruega,0,0,ProGamer,3
+JUGADOR,Martin,Francia,0,0,13,DIAMANTE
+JUGADOR,Daniela,España,0,0,19,MAESTRO
