@@ -1,0 +1,5 @@
+INDUSTRIAL,Vehiculo: marca='marca2', matricula='5678CD', precioHora=27.0, enReparacion=true,4,20.0,5.0
+INDUSTRIAL,Vehiculo: marca='marca2', matricula='5678CD', precioHora=27.0, enReparacion=true,4,20.0,2.0
+TURISMO,Vehiculo: marca='marca2', matricula='5678CD', precioHora=27.0, enReparacion=true,4,20.0,5
+TURISMO,Vehiculo: marca='marca2', matricula='5678CD', precioHora=27.0, enReparacion=true,4,20.0,5
+INDUSTRIAL,Vehiculo: marca='marca2', matricula='5678CD', precioHora=27.0, enReparacion=true,4,20.0,7.0

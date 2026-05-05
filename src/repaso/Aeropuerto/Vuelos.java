@@ -1,10 +1,15 @@
 package repaso.Aeropuerto;
+/*
 
 public class Vuelos {
     private String numero;
     private String origen;
     private String destino;
     private String dia;
+
+    public Vuelos(int numero, double precioNoche, Reserva reserva) {
+    }
+
     public enum TipoClase {turista, primera};
     private TipoClase clase;
 
@@ -78,3 +83,5 @@ public class Vuelos {
         return new Vuelos(numero,origen,destino,clase,dia);
     }
 }
+
+ */
